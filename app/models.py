@@ -10,12 +10,12 @@ class User(db.Model,UserMixin):
    __tablename__ = 'users'
 
    id = db.Column(db.Integer, primary_key=True)
-   name = db.Column(db.String(120), nullable=False)
-   username = db.Column(db.String(30), unique=True, nullable=False)
-   email = db.Column(db.String(100), unique=True, nullable=False)
-   password = db.Column(db.String(300), nullable=False)
-   avatar = db.Column(db.String(30), default='default.jpg')
-   bio = db.Column(db.String(140))
+   name = db.Column(db.String(254), nullable=False)
+   username = db.Column(db.String(40), unique=True, nullable=False)
+   email = db.Column(db.String(50), unique=True, nullable=False)
+   password = db.Column(db.String(30), nullable=False)
+   avatar = db.Column(db.String(20), default='default.jpg')
+   bio = db.Column(db.String(254))
    posts = db.relationship('Posts', backref='author', lazy=True)
    #comments = db.Column('Comments', backref= 'author',lazy =True)
 
