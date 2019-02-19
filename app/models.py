@@ -10,7 +10,7 @@ class User(db.Model,UserMixin):
    __tablename__ = 'users'
 
    id = db.Column(db.Integer, primary_key=True)
-   name = db.Column(db.String(254), nullable=False)
+   #name = db.Column(db.String(254), nullable=False)
    username = db.Column(db.String(40), unique=True, nullable=False)
    email = db.Column(db.String(50), unique=True, nullable=False)
    password = db.Column(db.String(30), nullable=False)
@@ -20,7 +20,7 @@ class User(db.Model,UserMixin):
    #comments = db.Column('Comments', backref= 'author',lazy =True)
 
    def __repr__(self):
-      return f"Users('{self.name}', '{self.username}', '{self.email}')"
+      return f"Users('{self.username}', '{self.email}')"
 
 class Posts(db.Model):
 
@@ -31,7 +31,7 @@ class Posts(db.Model):
    content = db.Column(db.String, nullable=False)
    image = db.Column(db.String, default='post.jpg')
    time = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-   writer = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+ #  writer = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
    comments = db.relationship('Comments', backref='parent_post', lazy=True)
    link = db.Column(db.String, nullable=False, unique=True)
    user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
