@@ -7,7 +7,7 @@ class User(db.Model,UserMixin):
    User table model.
    Will take user's name, username, email, password, avatar, and bio.
    '''
-    __tablename__ = 'users'
+   __tablename__ = 'users'
 
    id = db.Column(db.Integer, primary_key=True)
    name = db.Column(db.String(120), nullable=False)
@@ -24,7 +24,7 @@ class User(db.Model,UserMixin):
 
 class Posts(db.Model):
 
-    __tablename__ = 'posts'
+   __tablename__ = 'posts'
 
    id = db.Column(db.Integer, primary_key=True)
    title = db.Column(db.String, nullable=False)
@@ -65,7 +65,7 @@ class Posts(db.Model):
 
 class Subscriptions(db.Model):
 
-    __tablename__ = 'subscriptions'
+   __tablename__ = 'subscriptions'
    id = db.Column(db.Integer, primary_key=True)
    email = db.Column(db.String(60), nullable=False, unique=True)
 
@@ -84,7 +84,7 @@ class Subscriptions(db.Model):
 
 class Comments(db.Model):
    
-    __tablename__ = 'comments'
+   __tablename__ = 'comments'
    id = db.Column(db.Integer, primary_key=True)
    name = db.Column(db.String(60), nullable=False) 
    comment = db.Column(db.String(480), nullable=False)
