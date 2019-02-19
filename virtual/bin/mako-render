@@ -1,4 +1,5 @@
-#!/home/carey/Documents/moringa-projects/Blog/virtual/bin/python2
+#!/home/carey/Documents/moringa-projects/Blog/virtual/bin/python3.6
+
 # -*- coding: utf-8 -*-
 import re
 import sys

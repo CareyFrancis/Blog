@@ -4,8 +4,8 @@ class Config:
     """
     This is the class which will contain the general configurations
     """
-    SECRET_KEY = os.environ.get("carexfm")
-    SQLALCHEMY_DATABASE_URI='postgresql+psycopg2://carey:carexfm.@localhost/Blog' 
+    SECRET_KEY = '12345'
+    SQLALCHEMY_DATABASE_URI='postgresql+psycopg2://carey:carexfm.@localhost/blog' 
     MAIL_SERVER = "smtp.gmail.com"
     MAIL_PORT = 587
     MAIL_USE_TLS = True
@@ -18,7 +18,7 @@ class DevConfig(Config):
     """
     This is the class which will contain the development configurations
     """
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://carey:carexfm@localhost/Blog'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://carey:carexfm@localhost/blog'
     DEBUG = True
 
 
@@ -32,7 +32,7 @@ class TestConfig(Config):
     """
     This is the class which will contain the test configurations
     """
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://carey:carexfm@localhost/Blog'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://carey:carexfm@localhost/b\qlog'
 
 config_options = {
     "development": DevConfig,

@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC|Dosis|Homemade+Apple|Indie+Flower|Nunito|Pacifico');
+
+
+
+.title {
+    font-family: 'Homemade Apple', cursive;
+    size: 30px;
+    text-align: center;
+}
+
+.main_page{
+    text-align: center;
+    border-radius: 2%;
+    padding: 1%;
+}
+
+
+.register_main{
+    text-align: center;
+    border-radius: 2%;
+    padding: 1%;
+    font-family: 'Dosis', sans-serif;
+}
+
+.header_font{
+    font-family: 'Dosis', sans-serif;
+}
+
+.bordered{
+    border: 8px solid orange;
+}
+
+.medium-styled-text {
+    font-family: 'Pacifico', cursive;
+
+}
+
+.logo_main{
+    width: 200px;
+    height: auto;
+    margin: 0 auto;
+}
+
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 20px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    size: 3px;
+    color: black;
+    padding: 3px 4px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+
+
+.center{
+    text-align: center;
+    background-color: orange;
+}

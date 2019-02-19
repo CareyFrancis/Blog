@@ -33,8 +33,8 @@ def create_app(config_name):
    app.register_blueprint(auth_blueprint,url_prefix = '/authenticate')
    app.register_blueprint(main_blueprint)
 
-   from .request import configure_request
-   configure_request(app)
+  # from .request import configure_request
+   #configure_request(app)
 
 
 
