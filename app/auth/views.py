@@ -45,9 +45,3 @@ def logout():
     logout_user()
     return redirect(url_for("main.index"))
 
-
-
-@auth.route('/terms_and_services',methods = ["GET"])
-def terms():
-    title = 'User terms & Services'
-    return render_template('auth/terms.html')
