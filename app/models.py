@@ -1,6 +1,8 @@
 from . import db,login_manager
+from werkzeug.security import generate_password_hash,check_password_hash
 from datetime import datetime
 from flask_login import UserMixin
+
 
 class User(db.Model,UserMixin):
    '''
@@ -14,11 +16,23 @@ class User(db.Model,UserMixin):
    username = db.Column(db.String(40), unique=True, nullable=False)
    email = db.Column(db.String(50), unique=True, nullable=False)
    password = db.Column(db.String(30), nullable=False)
+   pass_secure = db.Column(db.String(250))
    avatar = db.Column(db.String(20), default='default.jpg')
    bio = db.Column(db.String(254))
    posts = db.relationship('Posts', backref='author', lazy=True)
    #comments = db.Column('Comments', backref= 'author',lazy =True)
+   @property
+   def password(self):
+      raise AttributeError('Cannot Read')
 
+   @password.setter
+   def password(self,password):
+
+      self.pass_secure = generate_password_hash(password)
+
+   def verify_password(self,password):
+      return check_password_hash(self.pass_secure,password)
+   
    def __repr__(self):
       return f"Users('{self.username}', '{self.email}')"
 
@@ -114,5 +128,5 @@ class Comments(db.Model):
 
 @login_manager.user_loader
 def load_user(user_id):
-   return Users.query.get(int(user_id))
+   return User.query.get(int(user_id))
    

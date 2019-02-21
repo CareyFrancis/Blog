@@ -15,8 +15,8 @@ def login():
         if user is not None and user.verify_password(login_form.password.data):
             login_user(user,login_form.remember.data)
             return redirect(request.args.get('next') or url_for('main.index'))
-        else:
-            flash('Sorry wrong username or password')
+    
+    flash('Sorry, wrong username or password')
 
     title = 'Log in'
     return render_template('auth/login.html', login_form = login_form, title=title)
@@ -31,10 +31,8 @@ def register():
         db.session.commit()
 
 
-
-
         return redirect(url_for('auth.login'))
-        title = "New Account"
+    title = "New Account"
     return render_template('auth/register.html',registration_form = form)
 
 @auth.route('/logout')

@@ -4,6 +4,9 @@ from .forms import UpdateProfile, BlogForm
 from ..models import User
 from flask_login import login_required, current_user
 from .. import db
+import requests
+import json
+import os
 # import markdown2
 
 
@@ -12,19 +15,20 @@ from .. import db
 def index():
     title = 'CAREY-BLOG'
 
+    random = requests.get('http://quotes.stormconsultancy.co.uk/random.json').json()
+
     #search_pitch = request.args.get('pitch_query')
     #pitches = Pitch.get_all_pitches()
     #categories = Category.get_categories()
-    return render_template('index.html', title=title)
+    return render_template("index.html",title = title, random = random)
 
 
 @main.route('/blog/new/', methods=['GET', 'POST'])
-#@login_required
+@login_required
 def new_blog():
 
     form = BlogForm()
-    if category is None:
-        abort(404)
+    
 
     if form.validate_on_submit():
         blog = form.content.data
@@ -33,7 +37,7 @@ def new_blog():
         new_blog.save_blog()
         return redirect(url_for('main.index'))
 
-    return render_template('blog.html', new_blog_form=form)
+    return render_template('new_blog.html', new_blog_form=form)
 
 
 
@@ -62,6 +66,21 @@ def update_pic(uname):
         db.session.commit()
     return redirect(url_for('main.profile', uname=uname))
 
+@main.route('/blogs/<int:blog_id>',methods = ["GET","POST"])
+def view_blog(blog_id):
+    blog = Blog.query.filter_by(id=blog_id).first()
+    random = random_quote()
+
+    random = requests.get('http://quotes.stormconsultancy.co.uk/random.json').json()
+    if form.validate_on_submit():
+        name = form.name.data
+        description = form.description.data
+        new_comment = Comment(name=name, description=description,blog_id=blog.id)
+        new_comment.save_comment()
+        return redirect(url_for('main.view_blog', blog_id=blog.id))
+    comments = Comment.query.filter_by(blog_id=blog.id)
+
+    return render_template("index.html", form=form, blog=blog, comments=comments, random = random)
 
 @main.route('/user/<uname>')
 def profile(uname):

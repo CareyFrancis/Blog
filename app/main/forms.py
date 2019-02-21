@@ -13,5 +13,10 @@ class BlogForm(FlaskForm):
     submit = SubmitField('Create Blog')
 
 class CommentsForm(FlaskForm):
-    comment = TextAreaField('Comment on this pitch:', validators=[Required()])
+    comment = TextAreaField('Comment on this blog:', validators=[Required()])
     submit = SubmitField('SUBMIT')
+
+class SubscribeForm(FlaskForm):
+    email = StringField("Enter email", validators = [Required()])
+    submit = SubmitField("Subscribe")
+
